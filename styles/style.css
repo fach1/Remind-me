@@ -1,0 +1,371 @@
+/* Main styles for the project */
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Fixed header styles */
+.fixed-header {
+    position: fixed;
+    top: 0rem;
+    left: 0;
+    width: 100%;
+    background-color: #1e1e1e;
+    padding: 10px 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.fixed-header h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: #ffffff;
+}
+
+.fixed-header .header-actions {
+    margin-top: 10px;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.fixed-header .header-actions .btn {
+    width: 50% !important; /* Ancho del 50% */
+    margin: 0 auto; /* Centrar horizontalmente */
+    font-size: 1rem; /* Tamaño de fuente predeterminado */
+    height: 40px; /* Altura fija para igualar la barra de búsqueda */
+    display: flex;
+    align-items: center; /* Centrar el contenido verticalmente */
+    justify-content: center; /* Centrar el contenido horizontalmente */
+}
+
+@media (max-width: 768px) {
+    .fixed-header .header-actions .btn {
+        font-size: 0.9rem; /* Slightly smaller font for tablets */
+    }
+}
+
+@media (max-width: 576px) {
+    .fixed-header .header-actions .btn {
+        font-size: 0.8rem; /* Smaller font for mobile devices */
+    }
+}
+
+
+.fixed-header .search-bar {
+    width: 50% !important;
+    margin: 0 auto; /* Center horizontally */
+}
+
+.fixed-header .search-bar input {
+    font-size: 1rem; /* Tamaño de fuente */
+    height: 40px; /* Altura fija para igualar el botón */
+    text-align: center; /* Centrar texto dentro del input */
+}
+
+
+.center-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: calc(250px + 20px); /* Add extra space to avoid overlapping with the fixed header */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the cards horizontally */
+    justify-content: center; /* Center the cards vertically */
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+/* Fade-out effect for removing reminders */
+.fade-out {
+    animation: fadeOut 0.3s ease-out forwards;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* Animation for adding, editing, or removing reminders */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(20px); }
+}
+
+.reminder-list .card {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Material Design floating label animation */
+.form-outline {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-outline input {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 10px;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.form-outline label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 1rem;
+    color: #f5f5f5 !important; /* Light color for labels in dark mode */
+    transition: all 0.2s ease;
+    pointer-events: none;
+}
+
+.form-outline input:focus + label,
+.form-outline input:not(:placeholder-shown) + label {
+    top: -10px;
+    left: 5px;
+    font-size: 0.8rem;
+    color: #495057;
+    background: white;
+    padding: 0 5px;
+}
+
+/* Responsive design improvements */
+@media (max-width: 768px) {
+    .reminder-list {
+        padding: 10px;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .modal-title {
+        font-size: 1.25rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .center-content {
+        padding: 10px;
+    }
+    h1 {
+        font-size: 1.75rem;
+    }
+    .card {
+        max-width: 350px;
+        margin: 0 auto;
+    }
+    .modal-dialog {
+        width: 90%;
+        margin: 1rem auto;
+    }
+    .modal-content {
+        padding: 1rem;
+    }
+}
+
+/* Dark and light theme support */
+body.light-theme {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+body.dark-theme {
+    background-color: #1e1e1e !important; /* Slightly lighter dark background */
+    color: #e0e0e0 !important; /* Softer white for text */
+}
+
+button.theme-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+.card {
+    background-color: #1e1e1e; /* Darker background for cards */
+    color: #ffffff; /* White text for cards */
+    border: 1px solid #333333; /* Subtle border for cards */
+    border-radius: 8px; /* Rounded corners for a modern design */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for elevation effect */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+/* Enhanced modal animations */
+.modal.fade .modal-dialog {
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    transform: translateY(-50px);
+    opacity: 0;
+}
+
+.modal.fade.show .modal-dialog {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: #1e1e1e !important; /* Dark background for modals */
+    color: #f5f5f5 !important; /* Improved contrast for text in modals */
+    border: 1px solid #333333; /* Subtle border for modals */
+}
+
+.modal-header, .modal-footer {
+    border-color: #444444; /* Darker border for modal header and footer */
+}
+
+.modal-header .modal-title, .modal-footer button {
+    color: #ffffff !important; /* Ensure header and footer text is clearly visible */
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.modal-content input {
+    color: #f5f5f5 !important; /* Ensure input text color matches modal text */
+    background-color: #2a2a2a; /* Slightly lighter background for input fields */
+    border: 1px solid #444444; /* Subtle border for input fields */
+}
+
+.modal-content label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 1rem;
+    color: #b0b0b0; /* Softer color for labels */
+    transition: all 0.2s ease;
+    pointer-events: none;
+}
+
+.modal-content input:focus + label,
+.modal-content input:not(:placeholder-shown) + label {
+    top: -10px;
+    left: 5px;
+    font-size: 0.8rem;
+    color: #f5f5f5; /* Match label color with modal text */
+    background: #1e1e1e; /* Match background with modal */
+    padding: 0 5px;
+}
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    filter: invert(1); /* Makes the calendar icon light in dark mode */
+}
+
+button.btn-close {
+    filter: invert(1); /* Makes the close button icon light in dark mode */
+}
+
+.search-bar {
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #b0b0b0;
+    font-size: 1rem;
+}
+
+.search-bar input {
+    background-color: #2a2a2a; /* Match background with dark theme */
+    color: #f5f5f5; /* Light text color for better contrast */
+    border: 1px solid #444444; /* Subtle border to match theme */
+    padding: 10px;
+    border-radius: 4px;
+    padding-left: 35px; /* Ajustar el padding para acomodar el icono */
+    font-size: 1rem; /* Match font size with the button */
+}
+
+.search-bar input::placeholder {
+    color: #b0b0b0; /* Softer placeholder text color */
+}
+
+.search-bar input:focus {
+    background-color: #2a2a2a !important; /* Ensure background remains dark when focused */
+    color: #f5f5f5 !important; /* Ensure text remains light when focused */
+    border-color: #555555; /* Slightly lighter border on focus */
+}
+
+.search-bar input:focus::placeholder {
+    color: #565656; /* Darker placeholder text color when focused */
+}
+
+button i {
+    margin-right: 5px; /* Add spacing between icon and text */
+}
+
+.btn-success {
+    background-color: #28a745 !important; /* Vibrant green */
+    border-color: #28a745 !important;
+}
+
+.btn-danger {
+    background-color: #dc3545 !important; /* Vibrant red */
+    border-color: #dc3545 !important;
+}
+
+.btn-info {
+    background-color: #17a2b8 !important; /* Vibrant blue */
+    border-color: #17a2b8 !important;
+}
+
+.form-control {
+    font-size: 1rem;
+}
+
+.loading-indicator {
+    text-align: center;
+    font-style: italic;
+    color: #b0b0b0;
+}
+
+#sortOptions {
+    width: 50% !important;
+    margin: 0 auto;
+    font-size: 1rem;
+    height: 40px;
+    text-align: center;
+    border: 1px solid #444444;
+    background-color: #2a2a2a;
+    color: #f5f5f5;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+#sortOptions:focus {
+    border-color: #555555;
+    outline: none;
+}
